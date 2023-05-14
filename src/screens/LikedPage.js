@@ -15,15 +15,15 @@ const LikedPage = () => {
 
   return (<>
         <Navbar/>
-        <h2 style={{display:'flex',justifyContent:'center'}}>Your Liked Movies {liked.length>0 && 'are Empty'}</h2>
+        <h2 style={{display:'flex',justifyContent:'center'}}>Your Liked Movies {!liked.length>0 && 'are Empty'}</h2>
             <div style={{display:'flex',justifyContent:'center', flexWrap:'wrap'}}> 
             
             {
                 liked?.map((curMovie)=>(
                     <MovieCard 
-                        movieTitle={curMovie.movieTitle}
-                        poster={curMovie.Poster}
-                        year={curMovie.Year}
+                        movieTitle={curMovie.movieTitle.length>15 ? `${curMovie.movieTitle.slice(0,15)}...`:curMovie.movieTitle}
+                        poster={curMovie.poster}
+                        year={curMovie.year}
                     />
                 ))
             }
